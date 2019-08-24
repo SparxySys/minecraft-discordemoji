@@ -1,0 +1,6 @@
+{
+    "id": "net.vampyrebytes.minecraftmods.discordemoji",
+    "name": "Discord Emoji",
+    "authors": [ "Christina Lena Korosec" ],
+    "listeners": [ "net.vampyrebytes.minecraftmods.discordemoji.ModInitializer" ]
+}

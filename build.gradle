@@ -1,38 +1,61 @@
 buildscript {
     repositories {
+        mavenCentral()
         jcenter()
         maven { url 'https://www.jitpack.io' }
         maven { url 'https://files.minecraftforge.net/maven' }
+        maven { url "https://repo.spongepowered.org/maven" }
     }
     dependencies {
         classpath 'com.github.Chocohead:ForgeGradle:moderniser-SNAPSHOT'
+        classpath "org.spongepowered:mixingradle:0.5-SNAPSHOT"
     }
 }
 
-apply plugin: 'java'
+plugins {
+    id 'java'
+}
 apply plugin: 'net.minecraftforge.gradle.tweaker-client'
+apply plugin: "org.spongepowered.mixin"
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url 'https://www.dimdev.org/maven/' }
+    maven { url 'https://www.jitpack.io' }
+    maven { url "https://repo.spongepowered.org/maven" }
+}
+
+dependencies {
+    compile('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
+        exclude group: 'com.google.guava', module: 'guava'
+    }
+    compile 'com.github.Chocohead:Rift:48a6e15:dev'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
 
 group 'net.vampyrebytes.minecraftmods'
 version '0.0.1-SNAPSHOT'
 
 sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-    maven { url 'https://www.dimdev.org/maven/' }
-    maven { url 'https://www.jitpack.io' }
-}
-
-
-dependencies {
-    compile 'org.dimdev:mixin:0.7.11-SNAPSHOT'
-    implementation 'com.github.Chocohead:Rift:48a6e15:dev'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
+targetCompatibility = 1.8
 
 minecraft {
     version = '1.13.2'
-    mappings = 'snapshot_20181130'
+    mappings = 'stable_47'
     runDir = 'run'
     tweakClass = 'org.dimdev.riftloader.launch.RiftLoaderClientTweaker'
+}
+
+jar {
+    manifest.attributes(
+        'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+        'MixinConfigs': 'mixins.discordemoji.json'
+    )
+}
+
+sourceSets {
+    main {
+        ext.refMap = "mixins.discordemoji.refmap.json"
+    }
 }

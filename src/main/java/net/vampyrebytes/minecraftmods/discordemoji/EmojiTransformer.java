@@ -1,20 +1,26 @@
 package net.vampyrebytes.minecraftmods.discordemoji;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class EmojiTransformer {
+public class EmojiTransformer {
+
+    private static final Logger LOG = LogManager.getLogger(ModInitializer.class);
 
     private final Pattern emojiPattern;
     private final Map<String, Character> emojiMap;
 
-    static EmojiTransformer getInstance() {
+    public static EmojiTransformer getInstance() {
         return InstanceHolder.INSTANCE;
     }
 
@@ -23,7 +29,7 @@ class EmojiTransformer {
         this.emojiMap = loadEmojis();
     }
 
-    String transformEmojis(String text) {
+    public String transformEmojis(String text) {
         StringBuffer newText = new StringBuffer();
         Matcher matcher = this.emojiPattern.matcher(text);
         while (matcher.find()) {
@@ -57,9 +63,10 @@ class EmojiTransformer {
             bufferedReader.close();
             listInput.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            LOG.error("Failed to load emojis", e);
         }
-        return new ConcurrentHashMap<>(emojis);
+        LOG.debug("Emojis loaded");
+        return Collections.unmodifiableMap(new ConcurrentHashMap<>(emojis));
     }
 
     private static class InstanceHolder {
