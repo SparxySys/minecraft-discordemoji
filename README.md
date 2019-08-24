@@ -25,7 +25,7 @@ Add to minecraft/launcher_profiles.json:
 Add to minecraft/versions/1.13.2-rift-48a6e15/1.13.2-rift-48a6e15.json:
 ```json
 {
-  "id": "1.13.2-rift-1.0.4-SNAPSHOT",
+  "id": "1.13.2-rift-48a6e15",
   "inheritsFrom": "1.13.2",
   "time": "2018-11-29T09:50:00+00:00",
   "releaseTime": "2018-11-29T09:45:00+00:00",
