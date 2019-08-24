@@ -1,5 +1,7 @@
-# Discord emoji minecraft mod
+# Discord emoji minecraft mod for MC 1.13.2
 This mod will replace text such as `:smile:` with the relevant Discord emoji.
+
+Please keep in mind this mod is currently exclusively available for minecraft 1.13.2.
 
 ## Installation
 Install Rift and put the mod in your mods folder.
