@@ -62,3 +62,6 @@ Add to minecraft/versions/1.13.2-rift-48a6e15/1.13.2-rift-48a6e15.json:
   }
 }
 ```
+
+## Special thanks to [EmojiChat](https://github.com/RadBuilder/EmojiChat)
+Who kindly created the resource pack used in this mod.

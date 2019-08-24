@@ -9,9 +9,7 @@ buildscript {
     }
 }
 
-plugins {
-    id 'java'
-}
+apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle.tweaker-client'
 
 group 'net.vampyrebytes.minecraftmods'
@@ -27,6 +25,7 @@ repositories {
 
 
 dependencies {
+    compile 'org.dimdev:mixin:0.7.11-SNAPSHOT'
     implementation 'com.github.Chocohead:Rift:48a6e15:dev'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
