@@ -48,6 +48,7 @@ minecraft {
 }
 
 jar {
+    baseName 'mc-discordemoji'
     manifest.attributes(
         'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
         'MixinConfigs': 'mixins.discordemoji.json'

@@ -477,7 +477,6 @@ eight
 nine
 keycap_ten
 asterisk
-# v1.8
 rotating_light
 airplane
 rocket
