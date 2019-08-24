@@ -1,0 +1,39 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'https://www.jitpack.io' }
+        maven { url 'https://files.minecraftforge.net/maven' }
+    }
+    dependencies {
+        classpath 'com.github.Chocohead:ForgeGradle:moderniser-SNAPSHOT'
+    }
+}
+
+plugins {
+    id 'java'
+}
+apply plugin: 'net.minecraftforge.gradle.tweaker-client'
+
+group 'net.vampyrebytes.minecraftmods'
+version '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url 'https://www.dimdev.org/maven/' }
+    maven { url 'https://www.jitpack.io' }
+}
+
+
+dependencies {
+    implementation 'com.github.Chocohead:Rift:48a6e15:dev'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+minecraft {
+    version = '1.13.2'
+    mappings = 'snapshot_20181130'
+    runDir = 'run'
+    tweakClass = 'org.dimdev.riftloader.launch.RiftLoaderClientTweaker'
+}
