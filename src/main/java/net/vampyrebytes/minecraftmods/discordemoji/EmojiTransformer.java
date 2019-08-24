@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 public class EmojiTransformer {
 
-    private static final Logger LOG = LogManager.getLogger(ModInitializer.class);
+    private static final Logger LOG = LogManager.getLogger(EmojiTransformer.class);
 
     private final Pattern emojiPattern;
     private final Map<String, Character> emojiMap;
@@ -70,6 +70,6 @@ public class EmojiTransformer {
     }
 
     private static class InstanceHolder {
-        private static final EmojiTransformer INSTANCE = new EmojiTransformer();
+        private static EmojiTransformer INSTANCE = new EmojiTransformer();
     }
 }

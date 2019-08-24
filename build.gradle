@@ -32,6 +32,8 @@ dependencies {
     }
     compile 'com.github.Chocohead:Rift:48a6e15:dev'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile "org.mockito:mockito-core:2.+"
+    testCompile "org.assertj:assertj-core:3.11.1"
 }
 
 group 'net.vampyrebytes.minecraftmods'
