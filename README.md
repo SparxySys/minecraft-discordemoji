@@ -1,69 +1,94 @@
-# Discord emoji minecraft mod for MC 1.13.2
+# Discord emoji minecraft mod for MC 1.14.4
 This mod will replace text such as `:smile:` with the relevant Discord emoji.
 
-Please keep in mind this mod is currently exclusively available for minecraft 1.13.2.
+Please keep in mind this mod is currently exclusively available for minecraft 1.14.4.
 
 ## Installation
-Install Rift and put the mod in your mods folder.
+Install [Fabric loader](https://fabricmc.net) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) and put the mod in your mods folder.
 
-## Depends on [Chocohead Rift for 1.13.2](https://github.com/Chocohead/Rift)
-Add to minecraft/launcher_profiles.json:
+## Depends on Fabric Loader
+Add to `minecraft/launcher_profiles.json`:
 ```json
 {
   "profiles": {
-    "rift" : {
-      "icon" : "Furnace",
-      "lastUsed" : "2019-08-20T19:13:29.939Z",
-      "lastVersionId" : "1.13.2-rift-48a6e15",
-      "name" : "Rift 1.13.2",
+    "fabric-loader-1.14.4" : {
+      "created" : "2019-08-26T20:09:25.000Z",
+      "icon" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACABAMAAAAxEHz4AAAAGFBMVEUAAAA4NCrb0LTGvKW8spyAem2uppSakn5SsnMLAAAAAXRSTlMAQObYZgAAAJ5JREFUaIHt1MENgCAMRmFWYAVXcAVXcAVXcH3bhCYNkYjcKO8dSf7v1JASUWdZAlgb0PEmDSMAYYBdGkYApgf8ER3SbwRgesAf0BACMD1gB6S9IbkEEBfwY49oNj4lgLhA64C0o9R9RABTAvp4SX5kB2TA5y8EEAK4pRrxB9QcA4QBWkj3GCAMUCO/xwBhAI/kEsCagCHDY4AwAC3VA6t4zTAMj0OJAAAAAElFTkSuQmCC",
+      "javaArgs" : "-Xmx5G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M",
+      "lastUsed" : "2019-08-29T20:56:20.665Z",
+      "lastVersionId" : "fabric-loader-1.14.4+build.12_yarn-0.6.1+build.164",
+      "name" : "fabric-loader-1.14.4",
       "type" : "custom"
     }
   }
 }
 ```
 
-Add to minecraft/versions/1.13.2-rift-48a6e15/1.13.2-rift-48a6e15.json:
+Add to `minecraft/versions/fabric-loader-1.14.4+build.12_yarn-0.6.1+build.164/fabric-loader-1.14.4+build.12_yarn-0.6.1+build.164.json`:
 ```json
 {
-  "id": "1.13.2-rift-48a6e15",
-  "inheritsFrom": "1.13.2",
-  "time": "2018-11-29T09:50:00+00:00",
-  "releaseTime": "2018-11-29T09:45:00+00:00",
+  "id": "fabric-loader-1.14.4+build.12_yarn-0.6.1+build.164",
+  "inheritsFrom": "1.14.4",
+  "releaseTime": "2019-08-26T22:09:25+0200",
+  "time": "2019-08-26T22:09:25+0200",
   "type": "release",
+  "mainClass": "net.fabricmc.loader.launch.knot.KnotClient",
+  "arguments": {
+    "game": []
+  },
   "libraries": [
     {
-      "name": "com.github.Chocohead:Rift:48a6e15",
-      "url": "https://www.jitpack.io/"
+        "name": "net.fabricmc:fabric-loader:0.6.1+build.164",
+        "url": "https://maven.fabricmc.net/"
     },
     {
-      "name": "org.dimdev:mixin:0.7.11-SNAPSHOT",
-      "url": "https://www.dimdev.org/maven/"
+        "name": "net.fabricmc:yarn:1.14.4+build.12",
+        "url": "https://maven.fabricmc.net/"
     },
     {
-      "name": "org.ow2.asm:asm:6.2",
-      "url": "http://repo1.maven.org/maven2/"
+        "name": "net.fabricmc:tiny-mappings-parser:0.1.1.8",
+        "url": "https://maven.fabricmc.net/"
     },
     {
-      "name": "org.ow2.asm:asm-commons:6.2",
-      "url": "http://repo1.maven.org/maven2/"
+        "name": "net.fabricmc:sponge-mixin:0.7.11.38",
+        "url": "https://maven.fabricmc.net/"
     },
     {
-      "name": "org.ow2.asm:asm-tree:6.2",
-      "url": "http://repo1.maven.org/maven2/"
+        "name": "net.fabricmc:tiny-remapper:0.1.0.40",
+        "url": "https://maven.fabricmc.net/"
     },
     {
-      "name": "net.minecraft:launchwrapper:1.12"
+        "name": "net.fabricmc:fabric-loader-sat4j:2.3.5.4",
+        "url": "https://maven.fabricmc.net/"
+    },
+    {
+        "name": "com.google.jimfs:jimfs:1.1",
+        "url": "https://maven.fabricmc.net/"
+    },
+    {
+        "name": "org.ow2.asm:asm:7.1",
+        "url": "https://maven.fabricmc.net/"
+    },
+    {
+        "name": "org.ow2.asm:asm-analysis:7.1",
+        "url": "https://maven.fabricmc.net/"
+    },
+    {
+        "name": "org.ow2.asm:asm-commons:7.1",
+        "url": "https://maven.fabricmc.net/"
+    },
+    {
+        "name": "org.ow2.asm:asm-tree:7.1",
+        "url": "https://maven.fabricmc.net/"
+    },
+    {
+        "name": "org.ow2.asm:asm-util:7.1",
+        "url": "https://maven.fabricmc.net/"
     }
-  ],
-  "mainClass": "net.minecraft.launchwrapper.Launch",
-  "arguments": {
-    "game": [
-      "--tweakClass",
-      "org.dimdev.riftloader.launch.RiftLoaderClientTweaker"
-    ]
-  }
+  ]
 }
 ```
+Download into your mods folder: [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api/download/2773269)
 
 ## Special thanks to [EmojiChat](https://github.com/RadBuilder/EmojiChat)
 Who kindly created the resource pack used in this mod.
