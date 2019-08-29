@@ -1,0 +1,25 @@
+{
+    "schemaVersion": 1,
+    "id": "net-vampyrebytes-minecraftmods-discordemoji",
+    "name": "Discord Emoji",
+    "version": "0.0.2",
+    "authors": [ "Christina Lena Korosec" ],
+    "contact": {
+        "homepage": "https://vampyrebytes.net/",
+        "sources": "https://github.com/DarkSpyro003/minecraft-discordemoji/"
+    },
+    "listeners": [ "net.vampyrebytes.minecraftmods.discordemoji.ModInitializer" ],
+    "license": "ISC",
+    "entrypoints": {
+        "main": [
+            "net.vampyrebytes.minecraftmods.discordemoji.ModInitializer"
+        ]
+    },
+    "mixins": [
+        "mixins.discordemoji.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.6.0",
+        "fabric": "*"
+    }
+}

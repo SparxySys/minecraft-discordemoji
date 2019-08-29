@@ -1,15 +1,9 @@
 package net.vampyrebytes.minecraftmods.discordemoji;
 
-import org.dimdev.riftloader.listener.InitializationListener;
-import org.spongepowered.asm.launch.MixinBootstrap;
-import org.spongepowered.asm.mixin.Mixins;
-
-public class ModInitializer implements InitializationListener {
+public class ModInitializer implements net.fabricmc.api.ModInitializer {
 
     @Override
-    public void onInitialization() {
-        MixinBootstrap.init();
-        Mixins.addConfiguration("mixins.discordemoji.json");
+    public void onInitialize() {
         EmojiTransformer.getInstance(); // load emoji table and compile regex
     }
 }

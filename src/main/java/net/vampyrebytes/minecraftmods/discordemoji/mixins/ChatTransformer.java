@@ -1,16 +1,16 @@
 package net.vampyrebytes.minecraftmods.discordemoji.mixins;
 
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.text.BaseText;
+import net.minecraft.text.Text;
 import net.vampyrebytes.minecraftmods.discordemoji.EmojiTransformer;
 import org.spongepowered.asm.mixin.Mixin;
 
-@Mixin(TextComponentString.class)
-public abstract class ChatTransformer implements ITextComponent {
+@Mixin(BaseText.class)
+public abstract class ChatTransformer implements Text {
 
     @Override
-    public String getFormattedText() {
-        String text = ITextComponent.super.getFormattedText();
+    public String asFormattedString() {
+        String text = Text.super.asFormattedString();
         return EmojiTransformer.getInstance().transformEmojis(text);
     }
 }

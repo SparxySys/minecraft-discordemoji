@@ -2,9 +2,9 @@
   "required": true,
   "minVersion": "0.7.10",
   "package": "net.vampyrebytes.minecraftmods.discordemoji.mixins",
-  "refmap": "mixins.discordemoji.refmap.json",
+  "refmap": "net.vampyrebytes.minecraftmods.discordemoji-refmap.json",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
+  "client": [
     "ChatTransformer"
   ]
 }

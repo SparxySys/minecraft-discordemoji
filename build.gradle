@@ -6,18 +6,13 @@ buildscript {
         maven { url 'https://files.minecraftforge.net/maven' }
         maven { url "https://repo.spongepowered.org/maven" }
     }
-    dependencies {
-        classpath 'com.github.Chocohead:ForgeGradle:moderniser-SNAPSHOT'
-        classpath "org.spongepowered:mixingradle:0.5-SNAPSHOT"
-    }
 }
 
 plugins {
     id 'java'
     id 'jacoco'
+    id 'fabric-loom' version '0.2.5-SNAPSHOT'
 }
-apply plugin: 'net.minecraftforge.gradle.tweaker-client'
-apply plugin: "org.spongepowered.mixin"
 
 repositories {
     mavenCentral()
@@ -25,13 +20,20 @@ repositories {
     maven { url 'https://www.dimdev.org/maven/' }
     maven { url 'https://www.jitpack.io' }
     maven { url "https://repo.spongepowered.org/maven" }
+    maven {
+        name = "Fabric"
+        url = 'https://maven.fabricmc.net/'
+    }
 }
 
 dependencies {
+    minecraft 'com.mojang:minecraft:1.14.4'
+    mappings 'net.fabricmc:yarn:1.14.4+build.12'
+    modCompile 'net.fabricmc:fabric-loader:0.6.1+build.164'
+    modCompile 'net.fabricmc.fabric-api:fabric-api:0.3.2+build.218-1.14'
     compile('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
         exclude group: 'com.google.guava', module: 'guava'
     }
-    compile 'com.github.Chocohead:Rift:48a6e15:dev'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile "org.mockito:mockito-core:2.+"
     testCompile "org.assertj:assertj-core:3.11.1"
@@ -43,23 +45,26 @@ version '0.0.2-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-minecraft {
-    version = '1.13.2'
-    mappings = 'stable_47'
-    runDir = 'run'
-    tweakClass = 'org.dimdev.riftloader.launch.RiftLoaderClientTweaker'
+processResources {
+    inputs.property "version", project.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include "fabric.mod.json"
+        expand "version": project.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude "fabric.mod.json"
+    }
 }
 
+archivesBaseName = 'mc-discordemoji'
+
 jar {
-    baseName 'mc-discordemoji'
     manifest.attributes(
         'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
         'MixinConfigs': 'mixins.discordemoji.json'
     )
+    from "LICENSE"
 }
 
-sourceSets {
-    main {
-        ext.refMap = "mixins.discordemoji.refmap.json"
-    }
-}

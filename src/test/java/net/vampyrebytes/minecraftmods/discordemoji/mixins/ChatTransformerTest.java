@@ -1,6 +1,6 @@
 package net.vampyrebytes.minecraftmods.discordemoji.mixins;
 
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.text.LiteralText;
 import net.vampyrebytes.minecraftmods.discordemoji.EmojiTransformer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,11 +33,11 @@ public class ChatTransformerTest {
 
         final String input = "Hello this is some text";
 
-        when(chatTransformer.getFormattedText()).thenCallRealMethod();
-        when(chatTransformer.stream()).thenReturn(Stream.of(new TextComponentString(input)));
+        when(chatTransformer.asFormattedString()).thenCallRealMethod();
+        when(chatTransformer.stream()).thenReturn(Stream.of(new LiteralText(input)));
 
         ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
-        chatTransformer.getFormattedText();
+        chatTransformer.asFormattedString();
         verify(emojiTransformer).transformEmojis(captor.capture());
         assertThat(captor.getValue()).isEqualTo(input);
     }
