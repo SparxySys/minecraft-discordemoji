@@ -65,6 +65,6 @@ jar {
         'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
         'MixinConfigs': 'mixins.discordemoji.json'
     )
-    from "LICENSE"
+    from "LICENSE.md"
 }
 
