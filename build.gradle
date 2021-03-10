@@ -12,9 +12,9 @@ idea {
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-group 'net.vampyrebytes.minecraftmods'
-version '1.0.0-SNAPSHOT'
-archivesBaseName = 'mc-discordemoji'
+group = project.maven_group
+version = project.mod_version
+archivesBaseName = project.archive_base_name
 
 repositories {
     mavenCentral()
