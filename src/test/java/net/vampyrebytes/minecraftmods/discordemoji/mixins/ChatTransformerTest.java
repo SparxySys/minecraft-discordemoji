@@ -33,11 +33,11 @@ public class ChatTransformerTest {
 
         final String input = "Hello this is some text";
 
-        when(chatTransformer.asFormattedString()).thenCallRealMethod();
-        when(chatTransformer.stream()).thenReturn(Stream.of(new LiteralText(input)));
+        when(chatTransformer.getString()).thenCallRealMethod();
+        when(chatTransformer.of()).thenReturn(new LiteralText(input));
 
         ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
-        chatTransformer.asFormattedString();
+        chatTransformer.getString();
         verify(emojiTransformer).transformEmojis(captor.capture());
         assertThat(captor.getValue()).isEqualTo(input);
     }

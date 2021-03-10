@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.Mixin;
 public abstract class ChatTransformer implements Text {
 
     @Override
-    public String asFormattedString() {
-        String text = Text.super.asFormattedString();
+    public String getString() {
+        String text = Text.super.getString();
         return EmojiTransformer.getInstance().transformEmojis(text);
     }
 }
