@@ -1,5 +1,6 @@
 package net.vampyrebytes.minecraftmods.discordemoji;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -10,7 +11,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class EmojiTransformerTest {
 
     private static final char BASE = '\uac00';
-    private EmojiTransformer emojiTransformer = EmojiTransformer.getInstance();
+    private EmojiTransformer emojiTransformer;
+
+    @BeforeEach
+    public void setUp() {
+        emojiTransformer = EmojiTransformer.getInstance();
+    }
 
     @Test
     public void transformsEmojisCorrectly() {

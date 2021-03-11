@@ -1,5 +1,6 @@
 plugins {
     id 'jacoco'
+    id 'java'
     id 'fabric-loom' version '0.6-SNAPSHOT'
 }
 
@@ -26,6 +27,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.8.0'
     testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.8.0'
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.19.0'
@@ -68,3 +70,8 @@ jar {
     from "LICENSE.md"
 }
 
+test {
+    useJUnitPlatform {
+        includeEngines 'junit-jupiter'
+    }
+}
