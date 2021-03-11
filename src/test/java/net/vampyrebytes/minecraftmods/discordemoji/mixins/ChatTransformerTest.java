@@ -24,6 +24,8 @@ public class ChatTransformerTest {
     @Mock
     private EmojiTransformer emojiTransformer;
 
+    private EmojiTransformer realEmojiTransformer;
+
     @Test
     public void delegatesToEmojiTransformerCorrectly() {
         final String input1 = "Hello this is some text";
@@ -57,6 +59,7 @@ public class ChatTransformerTest {
         Class<?> instanceHolder = Class.forName(EmojiTransformer.class.getCanonicalName() + "$InstanceHolder");
         Field instanceField = instanceHolder.getDeclaredField("INSTANCE");
         instanceField.setAccessible(true);
+        realEmojiTransformer = (EmojiTransformer) instanceField.get(null);
         instanceField.set(null, emojiTransformer);
         when(emojiTransformer.transformEmojis(any())).thenAnswer(answer -> answer.getArgument(0) + " transformed");
     }
@@ -66,7 +69,7 @@ public class ChatTransformerTest {
         Class<?> instanceHolder = Class.forName(EmojiTransformer.class.getCanonicalName() + "$InstanceHolder");
         Field instanceField = instanceHolder.getDeclaredField("INSTANCE");
         instanceField.setAccessible(true);
-        instanceField.set(null, null);
+        instanceField.set(null, realEmojiTransformer);
     }
 
     private static class TransformableText implements StringVisitable {
