@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Mixin(TranslatableText.class)
-public abstract class ChatTransformer {
+public abstract class TranslatableTextTransformer {
 
     @Shadow
     List<StringVisitable> translations;

@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class ChatTransformerTest {
+public class TranslatableTextTransformerTest {
 
     @Mock
     private EmojiTransformer emojiTransformer;
@@ -30,7 +30,7 @@ public class ChatTransformerTest {
     public void delegatesToEmojiTransformerCorrectly() {
         final String input1 = "Hello this is some text";
         final String input2 = "More text";
-        DummyChatTransformer chatTransformer = new DummyChatTransformer();
+        DummyTranslatableTextTransformer chatTransformer = new DummyTranslatableTextTransformer();
         chatTransformer.translations = new ArrayList<>();
         UntransformableText untransformable1 = new UntransformableText();
         chatTransformer.translations.add(untransformable1);
@@ -128,6 +128,6 @@ public class ChatTransformerTest {
         }
     }
 
-    private static class DummyChatTransformer extends ChatTransformer {
+    private static class DummyTranslatableTextTransformer extends TranslatableTextTransformer {
     }
 }
